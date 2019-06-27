@@ -12,8 +12,11 @@ class PostsController < ApplicationController
   #新しく投稿されたテキストを受け取るアクション
   def create
     @post = Post.new(post_params)
-    @post.save
-    redirect_to("/posts/index")
+    if @post.save
+      redirect_to("/posts/index")
+    else
+      render("posts/new")
+    end
   end
 
   # なぜprivateにする必要があるか？

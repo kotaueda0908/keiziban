@@ -1,3 +1,6 @@
 class Post < ApplicationRecord
-  validates :title, :body, presence: true
+  with_options presence: true do
+  validates :title
+  validates :body
+  end
 end
