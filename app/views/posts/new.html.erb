@@ -1,7 +1,10 @@
 <h1>新規作成ページ</h1>
 <p>投稿を作成してください</p>
-<%= form_for(@post) do |form| %>
-  <%= form.text_field :title %>
-  <%= form.text_area :body %>
-  <%= form.submit "投稿" %>
+<%= form_for(@post) do |f| %>
+<% @post.errors.full_messages.each do |message| %>
+  <%= message %>
+<% end %>
+  <%= f.text_field :title %>
+  <%= f.text_area :body %>
+  <%= f.submit "投稿" %>
 <% end %>
