@@ -19,6 +19,27 @@ class PostsController < ApplicationController
     end
   end
 
+    #投稿詳細ページを表示する
+    def show
+      @post = Post.find(params[:id])
+    end
+
+    #投稿内容を編集する
+    def edit
+      @post = Post.find(params[:id])
+    end
+
+    def update
+      @post = Post.find(params[:id])
+      @post.title = params[:title]
+      @post.body = params[:body]
+      if @post.save
+        redirect_to("/posts/index")
+      else
+        render("posts/edit")
+      end
+    end
+
   # なぜprivateにする必要があるか？
   private
 
