@@ -13,6 +13,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
+      flash[:notice] = "投稿を作成しました"
       redirect_to("/posts/index")
     else
       render("posts/new")
@@ -29,18 +30,25 @@ class PostsController < ApplicationController
       @post = Post.find(params[:id])
     end
 
+    #投稿内容を更新する
     def update
       @post = Post.find(params[:id])
-      @post.title = params[:title]
-      @post.body = params[:body]
-      if @post.save
-        redirect_to("/posts/index")
-      else
-        render("posts/edit")
-      end
+       if @post.update(post_params)
+         flash[:notice] = "投稿を編集しました"
+         redirect_to("/posts/index")
+       else
+         render 'edit'
+       end
     end
 
-  # なぜprivateにする必要があるか？
+    #投稿を削除する
+    def destroy
+      @post = Post.find(params[:id])
+      @post.destroy
+      flash[:notice] = "投稿を削除しました"
+      redirect_to("/posts/index")
+    end
+
   private
 
   def post_params
