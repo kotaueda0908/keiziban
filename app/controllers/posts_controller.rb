@@ -1,12 +1,11 @@
 class PostsController < ApplicationController
   before_action :post_params, only: [:create]
+  before_action :set_my_thread, only: [:show,:update,:edit,:destroy]
+
   #投稿されたテキストを表示するページ
   def index
     @posts = Post.all
-  end
-  #新しく投稿を作成できるページ
-  def new
-     @post = Post.new
+    @post = Post.new
   end
 
   #新しく投稿されたテキストを受け取るアクション
@@ -19,16 +18,6 @@ class PostsController < ApplicationController
       render("posts/new")
     end
   end
-
-    #投稿詳細ページを表示する
-    def show
-      @post = Post.find(params[:id])
-    end
-
-    #投稿内容を編集する
-    def edit
-      @post = Post.find(params[:id])
-    end
 
     #投稿内容を更新する
     def update
@@ -53,6 +42,10 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :body)
+  end
+
+  def set_my_thread
+    @post = Post.find(params[:id])
   end
 
 end

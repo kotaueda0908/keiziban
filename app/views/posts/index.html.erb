@@ -1,8 +1,30 @@
 <h1>投稿一覧</h1>
 <div class="siimple-list" style="max-width:300px;">
   <div class="siimple-list-item">
-      <% @posts.each do |post| %>
-     <%= link_to(post.title, "/posts/#{post.id}") %>
+    <% @posts.each do |post| %>
+      <%= link_to(post.title, "/posts/#{post.id}") %>
     <% end %>
   </div>
+</div>
+
+<h1>新規投稿</h1>
+<div class="siimple-form">
+  <%= form_for(@post) do |f| %>
+  <% @post.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+    <div class="siimple-form-detail">
+      <h1>title</h1>
+      <%= f.text_field :title %>
+    </div>
+    <div class="siimple-form-field">
+        <div class="siimple-form-field-label">
+          <h1>text</h1>
+          <%= f.text_area :body %>
+        </div>
+    </div>
+    <div class="siimple-form-field">
+        <div class="siimple-btn siimple-btn--blue"><%= f.submit "投稿" %></div>
+    </div>
+  <% end %>
 </div>
