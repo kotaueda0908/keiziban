@@ -3,4 +3,5 @@ class Post < ApplicationRecord
   validates :title
   validates :body
   end
+ has_many :comments
 end

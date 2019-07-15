@@ -30,6 +30,12 @@ class PostsController < ApplicationController
        end
     end
 
+    def show
+      @post = Post.find(params[:id])
+      @comments = @post.comments
+      @comment = Comment.new
+    end
+
     #投稿を削除する
     def destroy
       @post = Post.find(params[:id])

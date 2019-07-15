@@ -10,9 +10,9 @@
 <h1>新規投稿</h1>
 <div class="siimple-form">
   <%= form_for(@post) do |f| %>
-  <% @post.errors.full_messages.each do |message| %>
-    <%= message %>
-  <% end %>
+    <% @post.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
     <div class="siimple-form-detail">
       <h1>title</h1>
       <%= f.text_field :title %>
@@ -28,3 +28,15 @@
     </div>
   <% end %>
 </div>
+
+<% if user_signed_in? %> <!-- ユーザーがログインしているか調べる -->
+  <!-- ユーザーがログインしていた時の処理 -->
+
+  <h4> メールアドレス： <%= current_user.email %> </h4>
+  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %> <!-- ログアウトをする -->
+<% else %>
+  <!-- ユーザーがログインしていなかった時の処理 -->
+  <h2> 現在ログインしていません </h2>
+  <%= link_to "ログイン", new_user_session_path, class: 'post' %> <!-- ログイン画面に移行する -->
+  <%= link_to "新規登録", new_user_registration_path, class: 'post' %> <!-- 新規登録画面に移行する -->
+<% end %>

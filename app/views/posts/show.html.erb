@@ -1,7 +1,23 @@
 <h1>投稿詳細ページ</h1>
-<p>
+<h2>
   <%= @post.title %>
-</p>
+</h2>
+
+<h2>コメント一覧</h2>
+<% @comments.each do |c| %>
+  <div>
+    <%= c.content %>
+     <hr>
+  </div>
+<% end %>
+
+<%= form_for [@post, @comment] do |f| %>
+  <%= f.text_field :content %>
+  <%= f.submit 'コメントする' %>
+<% end %>
+
+<% link_to "DELETE", post_comment_path(post_id: @post, id: comment.id), method: :delete %>
+
 <p>
   <%= link_to("編集", "/posts/#{@post.id}/edit") %>
   <%= link_to("削除", "/posts/#{@post.id}/destroy", {method: "delete"}) %>
