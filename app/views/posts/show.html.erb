@@ -16,7 +16,6 @@
   <%= f.submit 'コメントする' %>
 <% end %>
 
-<% link_to "DELETE", post_comment_path(post_id: @post, id: comment.id), method: :delete %>
 
 <p>
   <%= link_to("編集", "/posts/#{@post.id}/edit") %>
