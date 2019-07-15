@@ -2,12 +2,17 @@
 <h2>
   <%= @post.title %>
 </h2>
+<p>
+  <%= link_to("編集", "/posts/#{@post.id}/edit") %>
+  <%= link_to("削除", "/posts/#{@post.id}/destroy", {method: "delete"}) %>
+</p>
 
 <h2>コメント一覧</h2>
 <% @comments.each do |c| %>
   <div>
     <%= c.content %>
-     <hr>
+    <hr>
+    <p><% link_to "DELETE", post_comment_path(@post, id: c.id), method: :delete %></p>
   </div>
 <% end %>
 
@@ -15,9 +20,3 @@
   <%= f.text_field :content %>
   <%= f.submit 'コメントする' %>
 <% end %>
-
-
-<p>
-  <%= link_to("編集", "/posts/#{@post.id}/edit") %>
-  <%= link_to("削除", "/posts/#{@post.id}/destroy", {method: "delete"}) %>
-</p>

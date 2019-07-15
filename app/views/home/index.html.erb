@@ -1,8 +1,8 @@
 <h1>ログインアプリ</h1>
+<%= link_to("投稿一覧", "/posts/index") %>
 
 <% if user_signed_in? %> <!-- ユーザーがログインしているか調べる -->
   <!-- ユーザーがログインしていた時の処理 -->
-
   <h4> メールアドレス： <%= current_user.email %> </h4>
   <%= link_to "ログアウト", destroy_user_session_path, method: :delete %> <!-- ログアウトをする -->
 <% else %>

@@ -36,7 +36,6 @@ class PostsController < ApplicationController
       @comment = Comment.new
     end
 
-    #投稿を削除する
     def destroy
       @post = Post.find(params[:id])
       @post.destroy

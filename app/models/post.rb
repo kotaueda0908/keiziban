@@ -3,5 +3,5 @@ class Post < ApplicationRecord
   validates :title
   validates :body
   end
- has_many :comments
+ has_many :comments, :dependent => :destroy
 end
