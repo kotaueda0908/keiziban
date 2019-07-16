@@ -2,8 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
     get 'home/index'
-    get "posts/index" => "posts#index"
-    get "posts/new" => "posts#new"
+    get 'posts/new', to: 'posts#new'
     post "posts" => "posts#create"
     get 'posts/:id/edit', to: 'posts#edit'
     delete 'posts/:id/destroy', to: 'posts#destroy'

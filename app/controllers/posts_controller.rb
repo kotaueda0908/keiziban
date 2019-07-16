@@ -2,9 +2,7 @@ class PostsController < ApplicationController
   before_action :post_params, only: [:create]
   before_action :set_my_thread, only: [:show,:update,:edit,:destroy]
 
-  #投稿されたテキストを表示するページ
-  def index
-    @posts = Post.all
+  def new
     @post = Post.new
   end
 
@@ -13,7 +11,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     if @post.save
       flash[:notice] = "投稿を作成しました"
-      redirect_to("/posts/index")
+      redirect_to("/home/index")
     else
       render("posts/new")
     end
@@ -24,7 +22,7 @@ class PostsController < ApplicationController
       @post = Post.find(params[:id])
        if @post.update(post_params)
          flash[:notice] = "投稿を編集しました"
-         redirect_to("/posts/index")
+         redirect_to("/home/index")
        else
          render 'edit'
        end
@@ -40,7 +38,7 @@ class PostsController < ApplicationController
       @post = Post.find(params[:id])
       @post.destroy
       flash[:notice] = "投稿を削除しました"
-      redirect_to("/posts/index")
+      redirect_to("/home/index")
     end
 
   private

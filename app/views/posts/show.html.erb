@@ -12,7 +12,7 @@
   <div>
     <%= c.content %>
     <hr>
-    <p><% link_to "DELETE", post_comment_path(@post, id: c.id), method: :delete %></p>
+    <p><%= link_to "削除", post_comment_path(@post, id: c.id), method: :delete %></p>
   </div>
 <% end %>
 
