@@ -1,3 +1,69 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.index {
+  padding-left: 10px;
+  padding-top: 90px;
+}
+.post-index {
+  display: inline-flex;
+  padding-left: 5px;
+  font-size: 25px;
+}
+
+.menu {
+  font-size: 18px;
+  position: absolute;
+  top: 70px;
+  right: 40px;
+}
+
+.menu2 {
+  font-size: 18px;
+  position: absolute;
+  top: 70px;
+  right: 30px;
+}
+
+.not-login {
+  font-size: 13px;
+  color: white;
+  padding-top: 8px;
+}
+
+.siimple-form {
+  padding-top: 100px;
+  padding-left: 10px;
+}
+
+.show {
+  padding-top: 100px;
+  padding-left: 10px;
+}
+
+.signin {
+  position: absolute;
+  top: 90px;
+  left: 5px;
+}
+
+.Sign-up {
+  position: absolute;
+  top: 90px;
+  left: 5px;
+}
+
+.postnew {
+  width: 100px;
+  height: 40px;
+  border: solid 1px #0066CC;
+  background-color: #3399FF;
+  color: #FFFFFF;
+  font-size: 18px;
+}
